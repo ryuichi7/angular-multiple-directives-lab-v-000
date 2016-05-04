@@ -10,28 +10,30 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="ContactController as vm">
-            <ul>
-                <li>
-                    <h4>Name: {{ contact.name }}</h4>
-                    <h6>Phone: {{ contact.phone }}</h6>
+            <div ng-repeat="contact in vm.contacts">
+                <ul>
+                    <li>
+                        <h4>Name: {{ contact.name }}</h4>
+                        <h6>Phone: {{ contact.phone }}</h6>
 
-                    <a href="">Delete</a>
-                </li>
-            </ul>
-
+                        <a href="" ng-click="vm.removeContact($index)">Delete</a>
+                    </li>
+                </ul>
+            </div>
+            
             <h2>Add contact</h2>
 
-            <form>
+            <form ng-submit="vm.addContact()">
                 <div>
                     <label>Name</label>
-                    <input />
+                    <input type='text' ng-model="vm.name"/>
                 </div>
 
                 <div>
                     <label>Phone</label>
-                    <input />
+                    <input type='text' ng-model="vm.phoneNumber"/>
                 </div>
-                <button type="submit">Add Contact</button>
+                <button type="submit" >Add Contact</button>
             </form>
         </div>
     </div>
